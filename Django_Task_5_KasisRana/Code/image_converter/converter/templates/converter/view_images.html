@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Images</title>
+</head>
+<body>
+    <h1>Converted Images</h1>
+    <a href="{% url 'upload_image' %}">Upload Another Image</a>
+    <ul>
+        {% for image in images %}
+            <li>
+                <img src="{{ image.original_image.url }}" alt="Original" width="200">
+                {% if image.converted_image %}
+                    <img src="{{ image.converted_image.url }}" alt="Black & White" width="200">
+                {% else %}
+                    <p>No converted image available.</p>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
